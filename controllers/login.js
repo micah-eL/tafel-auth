@@ -15,7 +15,7 @@ loginRouter.post('/', async (request, response) => {
     const {username, password} = request.body
     const data = await dynamoClient.scan({TableName: TABLE_NAME}).promise();
     const user = data.Items.find(u => u.username === username);
-    console.log(user)
+    console.log("Logging in as: " + user)
 
     const passwordCorrect = user === null
         ? false
