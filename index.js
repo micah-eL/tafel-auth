@@ -1,5 +1,4 @@
 require('dotenv').config() //used for sensitive info
-// const config = require('./utils/config')
 const logger = require('./utils/logger')
 const express = require('express')
 const app = express()
@@ -12,7 +11,6 @@ const loginRouter = require('./controllers/login')
 
 const middleware = require('./utils/middleware')
 
-//app.use(express.static('build')) // Use Build
 app.use(cors())
 app.use(express.json())
 app.use('/api/users', usersRouter)

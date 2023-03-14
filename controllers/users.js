@@ -1,9 +1,9 @@
 const uuidv4 = require('uuid').v4;
 const bcrypt = require('bcrypt')
 const router = require('express').Router()
+
 var AWS = require("aws-sdk");
 AWS.config.update({region: "ca-central-1"});
-
 var credentials = new AWS.SharedIniFileCredentials({profile: "cmpt-474-prj-credentials"});
 AWS.config.credentials = credentials;
 
@@ -13,7 +13,7 @@ const TABLE_NAME = "users";
 
 // Create new User
 router.post('/', async (request, response) => {
-    const { username, name, role, password } = request.body
+    const {username, name, role, password} = request.body
 
     if (!password || password.length < 3) {
         return response.status(400).json({
@@ -84,5 +84,6 @@ router.put('/:id', (request, response, next) => {
         .catch(error => next(error))
 })
 */
+
 
 module.exports = router
